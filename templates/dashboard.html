@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+     <h1>Dashboard <small>Bienvenido {{session.username}}</small></h1>
+     <hr>
+     <!-- <table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Producto</th>
+                 <th>Warehouse</th>
+                 <th>Qty</th>
+             </tr>
+         </thead>
+         <tbody>
+                 {% for product in products %}
+                 {% if product.to_location != NULL %}
+                <tr>
+                 <td>{{product.product_id}}</td>
+                 <td>{{product.to_location}}</td>
+                 <td>{{product.qty}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+         </tbody>
+     </table> -->
+
+     <!-- <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Warehouse</th>
+                <th>Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for product in products %}
+               <tr>
+                <td>{{product.product_id}}</td>
+                <td>{{product.location_id}}</td>
+                <td>{{product.qty}}</td>
+               </tr>
+               {% endfor %}
+        </tbody>
+    </table> -->
+       {% for location in locations %}
+       <div>
+        <h3 class="mt-4 text-primary" >{{location}}</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Almacén</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for product in products %}
+                       {% if product.location_id == location %}
+                   <tr>
+                    <td>{{product.product_id}}</td>
+                    <td>{{product.location_id}}</td>
+                    <td>{{product.qty}}</td>
+                   </tr>
+                       {% endif %}
+                   {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        </div>
+    {% endfor %}
+{% endblock %}
